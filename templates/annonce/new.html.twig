@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Annonce{% endblock %}
+
+{% block body %}
+
+<body class="accueil">
+<nav class="v2">
+    <a href="/" class="logo"><img src="{{ asset('assets/img/logoJauneC.svg') }}" alt=""></a>
+    <ul>
+        <li><a href="{{ path('annonce_index') }}">Mon compte</a></li>
+        <li><a href="{{ path('annonce_new') }}">Proposer mes services</a></li>
+        {% if is_granted('ROLE_USER') %}
+            <li><a href="/logout" class="connexion">Deconnexion</a></li>
+        {% else %}
+            <li><a href="{{ path('register') }}">Inscription</a></li>
+            <li><a href="{{ path('app_login') }}" class="connexion">Connexion</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+<main class="proposerUnAtelier">
+    <div class="rectangleBlanc">
+        <h2 style="font-weight: 700;">Proposer un atelier culinaire</h2>
+
+        {{ include('annonce/_form.html.twig') }}
+        <!-- <form>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Nom de l'annonce</label>
+                <input type="" class="form-control" id="exampleFormControlInput1" placeholder="">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Descriptif de l'atelier que vous proposez</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Catégorie</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option>Cuisine Française</option>
+                    <option>Cuisine Indienne</option>
+                    <option>Cuisine Italienne</option>
+                    <option></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Date de l'évènement</label>
+                <input type="" class="form-control" id="exampleFormControlInput1" placeholder="">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Nombre de participants</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Département de l'évènement</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option>Charente Maritime</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+            </div>
+            <button>Déposer l'atelier</button>
+        </form> -->
+
+
+
+    </div>
+</main>
+    <a href="{{ path('annonce_index') }}">back to list</a>
+{% endblock %}

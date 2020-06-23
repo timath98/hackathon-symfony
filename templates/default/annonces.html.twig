@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<body>
+<nav class="v2">
+    <a href="/" class="logo"><img src="{{ asset('assets/img/logoJauneC.svg') }}" alt=""></a>
+    <ul>
+        <li><a href="{{ path('annonce_index') }}">Mon compte</a></li>
+        <li><a href="{{ path('annonce_new') }}">Proposer mes services</a></li>
+        {% if is_granted('ROLE_USER') %}
+            <li><a href="/logout" class="connexion">Deconnexion</a></li>
+        {% else %}
+            <li><a href="{{ path('register') }}">Inscription</a></li>
+            <li><a href="{{ path('app_login') }}" class="connexion">Connexion</a></li>
+        {% endif %}
+    </ul>
+</nav>
+<section class="recherche">
+    {{ form_start(formDept) }}
+    {{ form_widget(formDept) }}
+    {{ form_end(formDept) }}
+</section>
+<main class="ateliers">
+    <section class="menu">
+        <h2>Catégories culinaires</h2>
+        <div class="bar"></div>
+        {% for cat in catlist %}
+            {% if cat.nom == categ %}
+                <a href="" class="actif">{{ cat.nom }}</a>
+            {% else %}
+        <a href="">{{ cat.nom }}</a>
+            {% endif %}
+        {% endfor %}
+    </section>
+    <section>
+        <article class="tri">
+            <h3><strong>{{ taille }}</strong> Ateliers culinaires disponibles dans ce département</h3>
+            <select name="tri" id="tri">
+                <option value="date">Tri par date</option>
+                <option value="date">Tri ordre Alphabetique</option>
+            </select>
+        </article>
+        <div class="liste-ateliers">
+            {% for annonce in annonces %}
+                <a href="{{ path('annonce_showPerso', {'id': annonce.id}) }}" class="linkat">
+                <article>
+                    <div class="img-atelier" style="background:url({{ asset('assets' ~ annonce.idCategorie.image ) }}) center;background-size: cover;"></div>
+                    <div class="img-perso" style="background:url({{ asset('assets/img/user.png') }}) center;background-size: cover;">
+                        <div></div>
+                    </div>
+                    <div class="texte-atelier">
+                        <section>
+                            <article>
+                                <div style="transform: translateX(-20px)">
+                                    <h2>{{ annonce.idCreateur.prenom}}</h2>
+                                    <p><img src="{{ asset('assets/img/food.svg') }}" alt="" width="10%"> 0 / {{ annonce.nbMaxParticipants }}</p>
+                                </div>
+                            </article>
+                            <article>
+                                <h2>{{ annonce.intitule }}</h2>
+                                <h3 style="padding-left: 20px">{{ annonce.idCategorie.nom }}</h3>
+                                <p>{{ annonce.description }}</p>
+                            </article>
+                        </section>
+                        <div class="bar"></div>
+                        <section>
+                            <p><i class="fas fa-map-marker-alt"></i> {{ annonce.idDepartement.nom }}</p>
+                            <p><i class="far fa-clock"></i> {{ annonce.date|date("m/d/Y") }}</p>
+                        </section>
+                    </div>
+
+                </article>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+</body>
+{% endblock %}

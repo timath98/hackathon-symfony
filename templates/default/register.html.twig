@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<nav class="v2">
+    <a href="/" class="logo"><img src="{{ asset('assets/img/logoJauneC.svg') }}" alt=""></a>
+    <ul>
+        <li><a href="{{ path('annonce_index') }}">Mon compte</a></li>
+        <li><a href="{{ path('annonce_new') }}">Proposer mes services</a></li>
+        {% if is_granted('ROLE_USER') %}
+            <li><a href="/logout" class="connexion">Deconnexion</a></li>
+        {% else %}
+            <li><a href="{{ path('register') }}">Inscription</a></li>
+            <li><a href="{{ path('app_login') }}" class="connexion">Connexion</a></li>
+        {% endif %}
+    </ul>
+</nav>
+    <section class="inscription">
+        <div class="background">
+            <section>
+            </section>
+            <section>
+                <h2>Inscription</h2>
+
+                <section class="inscription-form-background">
+
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <datalist id="ville-data">
+                    </datalist>
+                    <button type="submit">Validez</button>
+                    {{ form_end(form) }}
+
+                </section>
+
+            </section>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/main.js') }}"></script>
+{% endblock %}

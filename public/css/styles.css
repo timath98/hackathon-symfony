@@ -1,0 +1,759 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+    line-height: 1;
+    font-family: 'Open Sans', sans-serif;
+    color: rgb(41, 40, 40);
+    background-color: rgba(156, 29, 25, 0.061);
+}
+
+
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(41, 40, 40);
+}
+
+h1{
+    font-size: 4vw;
+    font-weight: 800;
+}
+
+
+/* Regles generales */
+*, *:after, *:before {
+    box-sizing: border-box;
+  }
+  
+  img{vertical-align: middle;}
+
+.accueil{
+    overflow: hidden;
+}
+.btn{
+    margin: 0 !important;
+    background-color: #D94A64 !important;
+    font-weight: 700;
+    color: white;
+}
+nav{
+    top: 0;
+    position: fixed;
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.atelier section:first-of-type{
+    width: 70%;
+}
+
+.atelier section{
+    width: 25%;
+}
+
+.atelier section:first-of-type section{
+    width: 100%;
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 40%;
+}
+
+nav ul a{
+    color: white;
+}
+
+header{
+    width: 100%;
+    height: 90vh;
+    background: url(../assets/img/cooking-istock.jpg) center;
+    background-size: cover;
+}
+
+.background{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(217, 93, 65, 0.864), rgba(242, 195, 53, 0.319));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background section{
+    width: 40%;
+    padding: 20px;
+}
+
+.background section h1{
+    color: white;
+}
+
+.background section article{
+    width: 100%;
+    margin-top: 35px;
+    border-radius: 10px;
+    display: flex;
+}
+
+
+.background section article a{
+    border: solid 3px rgb(255, 255, 255);
+    color: white;
+    background-color:#D94A64;
+    font-weight: 700;
+    height: 50px;
+    border-radius: 50px;
+    display: inline-block;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+
+
+.description-back{
+    font-size: 1.3vw;
+    font-weight: 700;
+    line-height: 30px;
+    color: white;
+}
+
+.description-back:first-of-type{
+    margin-top: 20px;
+}
+
+.recherche{
+    width: 100%;
+    height: 10vh;
+    background-color: #D94A64;
+    display: flex;
+   justify-content: center;
+}
+
+.v2 {
+    position: initial;
+    background-color: white;
+}
+
+.v2 a {
+    color: rgb(41, 41, 41);
+}
+
+.recherche form label{
+    display: none;
+}
+
+.recherche form{
+    width: 80%;
+    height: 100%;
+}
+
+.recherche form div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.form-group {
+    margin-bottom: 0rem !important;
+}
+
+.recherche form div select{
+    border: none;
+    height: 60%;
+    border-radius: 10px;
+    margin-left: 20px;
+    width: 100%;
+    padding-left: 20px;
+    margin-right: 20px;
+}
+
+.recherche form div button{
+    border: solid 2px white;
+    background-color: rgba(255, 255, 255, 0);
+    height: 60%;
+    border-radius: 50px;
+    margin-left: 20%;
+    width: 30%;
+    color: white;
+    font-weight: 700;
+}
+
+
+.logo{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    left: 10%;
+    top: -5px;
+}
+
+
+
+
+.slider-wrap {
+    height: 100%;
+    width: 100%;
+  }
+  .slider-wrap .slider {
+    position: absolute;
+    left: 55%;
+    top: 25%;
+  }
+  
+  .slider-item {
+    width: 530px;
+    padding: 20px 0 25px 30px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: flex-start;
+    position: absolute;
+    opacity: 0;
+    z-index: 0;
+    box-shadow: 0 4px 9px #f1f1f4;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .slider-item .animation-card_image {
+    max-width: 60px;
+    max-height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0 4px 9px rgba(241, 241, 244, 0.72);
+    background-color: #ffffff;
+  }
+  .slider-item .animation-card_image img {
+    width: 53px;
+    height: 53px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .slider-item .animation-card_content {
+    width: 100%;
+    max-width: 374px;
+    margin-left: 26px;
+    font-family: "Open Sans", sans-serif;
+  }
+  .slider-item .animation-card_content .animation-card_content_title {
+    color: #4a4545;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: -0.18px;
+    line-height: 24px;
+    margin: 0;
+  }
+  .slider-item .animation-card_content .animation-card_content_description {
+    color: #696d74;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: normal;
+    line-height: 24px;
+    margin: 10px 0 0 0;
+  }
+  .slider-item .animation-card_content .animation-card_content_city {
+    font-size: 11px;
+    margin: 10px 0 0 0;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #696d74;
+  }
+
+
+/********************* ATELIER *************************/
+
+.ateliers {
+    width: 100%;
+    height: 82vh;
+    display: flex;
+    justify-content: center;
+}
+
+.ateliers section:first-of-type {
+    width: 20%;
+    background-color: white;
+}
+
+.ateliers section {
+    width: 50%;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.ateliers section article{
+    background-color: white;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.liste-ateliers{
+    height: 95%;
+   overflow-y: scroll;
+   overflow-x: hidden;
+   transition: all 200ms ease-in-out;
+}
+
+.ateliers .liste-ateliers article{
+   display: block;
+   height: 60%;
+}
+
+.img-atelier{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    filter: brightness(60%);
+    height: 30%;
+    width: 100%;
+ }
+
+ .img-perso{
+     width: 120px;
+     height: 120px;
+     top: 10%;
+     left: 10%;
+     background-color: white;
+     border-radius: 100px;
+     position: absolute;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+
+ .img-perso div{
+    width: 85%;
+    height: 85%;
+    border-radius: 70px;
+}
+
+.texte-atelier{
+    width: 100%;
+    height: 70%;
+}
+
+.texte-atelier .bar{
+    width: 90%;
+    margin-left: 5%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.129);
+}
+
+.texte-atelier section:first-of-type{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.texte-atelier section{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.texte-atelier section p{
+    font-size: 0.9vw;
+    color: grey;
+}
+
+
+
+.texte-atelier section article:first-of-type{
+    background-color: rgba(0, 0, 255, 0);
+    width: 30%;
+    align-self: flex-end;
+    text-align: center;
+}
+
+.texte-atelier section article h2{
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.texte-atelier section article h3{
+    font-weight: 700;
+    font-size: 0.9vw;
+    color: grey;
+    margin-bottom: 20px;
+}
+
+.texte-atelier section article p{
+    font-size: 0.9vw;
+    color: grey;
+    line-height: 20px;
+}
+
+
+.texte-atelier section article:first-of-type div{
+    margin-left: 43px;
+    margin-top: 10px;
+}
+
+
+.texte-atelier section article{
+    background-color: rgba(0, 0, 255, 0);
+    width: 70%;
+}
+
+.menu {
+    padding: 20px;
+}
+
+.menu h2 {
+    font-size: 1.8vw;
+    font-weight: 700;
+}
+
+.menu a {
+    font-size: 1.5vw;
+    margin-top: 10px;
+    color: grey;
+}
+
+.menu .bar{
+    width: 100%;
+    text-align: center;
+    height: 1px;
+    background-color: rgba(128, 128, 128, 0.244);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.actif{
+    font-weight: 700;
+    color: black !important;
+}
+
+.tri{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.tri strong{
+   font-weight: 700;
+   color: #D94A64;
+   font-size: 1.3vw;
+}
+
+a:hover{
+    text-decoration: none;
+    color: #D94A64;
+}
+
+.tri select{
+    border: none;
+    height: 60%;
+    border-radius: 10px;
+    margin-left: 20px;
+    width: 30%;
+    padding-left: 20px;
+    background-color: rgba(128, 128, 128, 0.108);
+}
+
+.ariane{
+    margin-left: 15%;
+    margin-top: 10px;
+    padding: 20px;
+    color: rgba(27, 30, 33, 0.54);
+}
+
+.atelier{
+    width: 70%;
+    margin-left: 15%;
+    display: flex;
+}
+
+.atelier section{
+    height: 70vh;
+    margin: 10px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.atelier section h3,h1,h2,p{
+    padding-left: 20px;
+}
+
+.atelier section h3{
+    font-size: 2vw;
+    font-weight: 700;
+    color: rgba(27, 30, 33, 0.69);
+}
+
+/******** INSCRIPTION *******/
+
+.inscription {
+    width: 100%;
+    height: 82vh;
+    background: url(../assets/img/cooking-istock.jpg) center;
+    background-size: cover;
+}
+
+.background .inscription-form-background{
+    margin: auto;
+    background-color: #ffffffc3;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.background section:last-of-type{
+    /*height: 90%;*/
+}
+
+.background h2{
+    text-align: center;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.inscription-form-background form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    padding: 0 5%;
+}
+
+
+
+.inscription-form-background form #utilisateur{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    padding: 0 5% 5%;
+}
+
+.form-group{
+    width: 100%;
+    font-weight: 700;
+    color: rgb(150, 150, 150);
+}
+
+.form-group > label[for="utilisateur_cp"]{
+   display: none;
+}
+
+.inscription-form-background form input[type=text], .inscription-form-background form input[type=password]{
+    border: none;
+    /*height: 50px;*/
+    border-radius: 10px;
+    /* margin-left: 20px; */
+    margin: 1% auto;
+    width: 100%;
+    padding: 5px 20px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.inscription-form-background form input[placeholder$="om"]{
+    height: 50px;
+    border-radius: 10px;
+    /* margin-left: 20px; */
+    margin: 2% 0;
+    width: 48%;
+    display: inline-block;
+    padding: 5px 20px;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+
+.inscription-form-background form button[type=submit]{
+    background-color: #D95D41;
+    border-radius: 50px;
+    margin-left: auto;
+    /*margin-top: 5%;*/
+    padding: 10px 40px;
+    width: fit-content;
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+
+.inscription-form-background form input[type=text]::placeholder {
+    font-weight: 700;
+}
+
+/****** Ajouter annonce *****/
+.proposerUnAtelier{
+    background: url(../assets/img/table.png) center;
+    background-repeat: no-repeat;
+    /* margin: 10%; */
+    margin: auto;
+    width: 80%;
+    height: 87vh;
+    display: flex;
+    justify-content: center;
+
+}
+
+.rectangleBlanc{
+    margin: auto;
+    background-color: #ffffffc3;
+    width: 80%;
+    height: 80%;
+    padding: 2% 5%;
+    border-radius: 10px;
+}
+
+.proposerUnAtelier h2{
+    font-size: 1.5em;
+    text-align: center;
+    padding-bottom: 5vh;
+}
+
+.proposerUnAtelier form-control{
+    border: none;
+    height: 30%;
+    border-radius: 10px;
+    /* margin-left: 20px; */
+    margin: 1% auto;
+    width: 100%;
+    padding: 5px 20px;
+    font-weight: 300;
+    font-size: 15px;
+
+}
+
+
+.proposerUnAtelier form{
+    border-radius: 50px;
+    margin-left: 20%;
+    margin-left: auto;
+    padding: 15px;
+
+    color: black;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.form-group{
+    /* padding-bottom: 10px; */
+}
+
+.form-group #exampleFormControlInput1{
+    background-color: white;
+    border: none;
+    height: 30%;
+    border-radius: 10px;
+
+    margin: 1% auto;
+    width: 100%;
+    padding: 5px 20px;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.form-group #exampleFormControlTextarea1{
+    background-color: white;
+    border: none;
+    height: 30%;
+    border-radius: 10px;
+    /* margin-left: 20px; */
+    margin: 1% auto;
+    width: 100%;
+    padding: 5px 20px;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.form-group #exampleFormControlSelect1{
+    background-color: white;
+    border: none;
+    height: 30%;
+    border-radius: 10px;
+    /* margin-left: 20px; */
+    margin: 1% auto;
+    width: 100%;
+    padding: 5px 20px;
+    font-weight: 400;
+    font-size: 15px;
+    margin-right: 20px !important;
+}
+
+.btn{
+    text-transform: uppercase;
+    margin-top: 5%;
+    margin-left: 75%;
+    background-color: #d95d41;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}

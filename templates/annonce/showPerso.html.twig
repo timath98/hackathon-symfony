@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annonce{% endblock %}
+
+{% block body %}
+    <nav class="v2">
+        <a href="/" class="logo"><img src="{{ asset('assets/img/logoJauneC.svg') }}" alt=""></a>
+        <ul>
+            <li><a href="{{ path('annonce_index') }}">Mon compte</a></li>
+            <li><a href="{{ path('annonce_new') }}">Proposer mes services</a></li>
+            {% if is_granted('ROLE_USER') %}
+                <li><a href="/logout" class="connexion">Deconnexion</a></li>
+            {% else %}
+                <li><a href="{{ path('register') }}">Inscription</a></li>
+                <li><a href="{{ path('app_login') }}" class="connexion">Connexion</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <p class="ariane">Annonces > {{ annonce.idCategorie.nom }} > {{ annonce.idDepartement.nom }} > Détails > {{ annonce.intitule }}</p>
+    <section class="atelier">
+        <section>
+            <article class="img-atelier" style="background:url({{ asset('assets' ~ annonce.idCategorie.image ) }}) center;background-size: cover;"></article>
+            <p style="margin-top: 10px; float: right;margin-right: 20px">Crée le {{ annonce.dateCreation|date("m/d/Y") }}</p>
+            <h1 style="margin-top: 30px">{{ annonce.intitule }}</h1>
+            <h3 style="margin-bottom: 50px">{{ annonce.idCategorie.nom }}</h3>
+            <h2 style="font-weight: 700;font-size: 1.5vw;margin-bottom: 10px">Description</h2>
+            <p style="line-height: 30px;color: rgba(29,33,36,0.73)">{{ annonce.description }}</p>
+            <div class="bar" style="margin-top: 70px;margin-bottom: 20px;margin-left:5%;width: 90%;height: 1px;background-color: rgba(169,169,169,0.53);"></div>
+            <article style=" display: flex;">
+                <p><i class="fas fa-map-marker-alt"></i> {{ annonce.idDepartement.nom }}</p>
+                <p><i class="far fa-clock"></i> {{ annonce.date|date("m/d/Y") }}</p>
+            </article>
+        </section>
+        <section style="text-align: center;display:flex;flex-direction: column;align-items: center">
+            <div class="img-ut" style="margin-top: 50px; width:100px;height:100px;border-radius:100px;background:url({{ asset('assets/img/icon.png') }}) center;background-size: cover;"></div>
+            <h2 style="padding-left: 0;margin-top:15px;font-size: 1.3vw;font-weight: 700">{{ annonce.idCreateur.prenom }}</h2>
+            <p style="padding-left: 0;margin-top:5px;font-size: 0.9vw;color: grey"><i class="fas fa-map-marker-alt"></i> {{ annonce.idCreateur.ville }}</p>
+            <p style="padding-left: 0;margin-top:15px;margin-bottom: 15px"><img src="{{ asset('assets/img/food.svg') }}" alt="" width="10%"> {{ partActu }} / {{ max }}</p>
+            <a style="color:white;font-weight:700;width: 80%;border-radius:10px;height: 50px;background-color: #D94A64;display: flex;justify-content: center;align-items: center" href="{{ path('add_participant', {'id': annonce.id}) }}">Participer</a>
+            <div style="margin-top:28px;padding: 10px;background-color: rgba(128,128,128,0.13); height: 40%;width: 80%;border-radius: 10px">
+                {% for part in annonce.participants %}
+                <article style="margin-bottom:10px;display:flex;justify-content:center;align-items:center;color:white;font-weight:700;border-radius:5px;background-color:#f2c335;width: 100%;height: 30px">{{ part.prenom }}</article>
+                {% endfor %}
+            </div>
+
+        </section>
+    </section>
+    <!--<table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ annonce.id }}</td>
+        </tr>
+        <tr>
+            <th>Intitule</th>
+            <td>{{ annonce.intitule }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ annonce.description }}</td>
+        </tr>
+        <tr>
+            <th>Date</th>
+            <td>{{ annonce.date ? annonce.date|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>Date_creation</th>
+            <td>{{ annonce.dateCreation ? annonce.dateCreation|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>NbMaxParticipants</th>
+            <td>{{ annonce.nbMaxParticipants }}</td>
+        </tr>
+        <tr>
+            <th>Participants</th>
+            {% for part in annonce.participants %}
+            <td>{{ part.nom }}</td>
+            {% endfor %}
+        </tr>
+        </tbody>
+    </table> -->
+
+
+{% endblock %}

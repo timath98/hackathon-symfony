@@ -1,0 +1,19 @@
+easy_admin:
+   entities:
+       Utilisateur:
+          class: App\Entity\Utilisateur
+          list:
+            actions: ['show']
+            fields: ['id',{ property: 'image', type: 'avatar', is_image_url: 'true' },'username','nom','prenom','roles','adresse','annoncesCreees']
+       # List the entity class name you want to manage
+
+       Annonce:
+         class: App\Entity\Annonce
+         list:
+           actions: ['show']
+
+       Categorie:
+         class: App\Entity\Categorie
+
+   design:
+    brand_color: '#D94A64'

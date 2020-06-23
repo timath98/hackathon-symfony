@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <body class="accueil">
+    <nav>
+        <a href="/" class="logo"><img src="{{ asset('assets/img/logoJauneC.svg') }}" alt=""></a>
+        <ul>
+            <li><a href="{{ path('annonce_index') }}">Mon compte</a></li>
+            <li><a href="{{ path('annonce_new') }}">Proposer mes services</a></li>
+            {% if is_granted('ROLE_USER') %}
+                <li><a href="/logout" class="connexion">Deconnexion</a></li>
+            {% else %}
+                <li><a href="{{ path('register') }}">Inscription</a></li>
+                <li><a href="{{ path('app_login') }}" class="connexion">Connexion</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <header>
+        <div class="background">
+            <section>
+                <h1>Ce soir on dîne chez vous !</h1>
+                <p class="description-back">Troc Miam adore cuisiner,</p>
+                <p class="description-back">Troc Miam adore rencontrer les gens!</p>
+                <p class="description-back" style="margin-top: 10px;">Et si on se rencontrait le temps d’un atelier de cuisine?
+                    Partagez vos meilleures recettes autour des ateliers de cuisine Troc Miam!</p>
+                <article>
+                    <a href="{{ path('annonce_new') }}">Organiser mon atelier culinaire !</a>
+                </article>
+            </section>
+            <section>
+                <div class="slider-wrap">
+                    <div id="card-slider" class="slider">
+                        {% for annonceone in allannonce %}
+                        <div class="slider-item">
+                            <div class="animation-card_image">
+                                <img src="{{ asset('assets/img/icon.png') }}" alt="">
+                            </div>
+                            <div class="animation-card_content">
+                                <h4 style="font-weight: 700" class="animation-card_content_title title-2">{{ annonceone.intitule }}</h4>
+                                <p style="color: grey; font-size: 0.7vw; transform: translateX(-18px)">{{ annonceone.idCategorie }}</p>
+                                <p class="animation-card_content_description p-2">{{ annonceone.description| u.truncate(120, '...')  }}</p>
+                                <p class="animation-card_content_city"><i class="far fa-clock"></i> {{ annonceone.date|date("m/d/Y") }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </header>
+    <section class="recherche">
+        {{ form_start(formDept) }}
+        {{ form_widget(formDept) }}
+        {{ form_end(formDept) }}
+    </section>
+    </body>
+{% endblock %}

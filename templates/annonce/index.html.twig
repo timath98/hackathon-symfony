@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annonce index{% endblock %}
+
+{% block body %}
+
+
+    <nav class="v2">
+        <a href="/" class="logo"><img src="{{ asset('assets/img/logoJauneC.svg') }}" alt=""></a>
+        <ul>
+            <li><a href="{{ path('annonce_index') }}">Mon compte</a></li>
+            <li><a href="{{ path('annonce_new') }}">Proposer mes services</a></li>
+            {% if is_granted('ROLE_USER') %}
+                <li><a href="/logout" class="connexion">Deconnexion</a></li>
+                {% else %}
+                    <li><a href="{{ path('register') }}">Inscription</a></li>
+                    <li><a href="{{ path('app_login') }}" class="connexion">Connexion</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <section class="atelier">
+        <section style="display: flex;flex-direction: column; height: 70vh;background-color: transparent">
+            {% for annonce in annonces_user %}
+            <section style="height: 70%;display: block">
+                <article class="img-atelier" style="background:url({{ asset('assets' ~ annonce.idCategorie.image ) }}) center;background-size: cover;"></article>
+                <p style="margin-top: 10px; float: right;margin-right: 20px">Crée le {{ annonce.dateCreation|date("m/d/Y") }}</p>
+                <h1 style="font-size:1.3vw;margin-top: 10px">{{ annonce.intitule }}</h1>
+                <h3 style="font-size:1vw;margin-bottom: 10px">{{ annonce.idCategorie.nom }}</h3>
+                <h2 style="font-weight: 700;font-size: 1vw;margin-bottom: 10px">Description</h2>
+                <p style="color: rgba(29,33,36,0.73)font-size:0.8vw">{{ annonce.description }}</p>
+                <div class="bar" style="margin-top: 10px;margin-bottom: 5px;margin-left:5%;width: 90%;height: 1px;background-color: rgba(169,169,169,0.53);"></div>
+                <article style=" display: flex;">
+                    <p><i class="fas fa-map-marker-alt"></i> {{ annonce.idDepartement.nom }}</p>
+                    <p><i class="far fa-clock"></i> {{ annonce.date|date("m/d/Y") }}</p>
+                    <a style="color: white;font-weight: 700; margin-left:15px;display:flex;align-items:center;justify-content:center;border-radius:10px;width: 20%;height: 50px;background-color: #f2c335" href="{{ path('annonce_show', {'id': annonce.id}) }}">Voir l'annonce</a>
+                    <a style="color: white;font-weight: 700; margin-left:15px;display:flex;align-items:center;justify-content:center;border-radius:10px;width: 20%;height: 50px;background-color: #f2c335" href="{{ path('annonce_edit', {'id': annonce.id}) }}">Modifier</a>
+                </article>
+            </section>
+            {% endfor %}
+        </section>
+        <section style="text-align: center;display:flex;flex-direction: column;align-items: center">
+            <div class="img-ut" style="margin-top: 50px; width:100px;height:100px;border-radius:100px;background:url({{ asset('assets/img/icon.png') }}) center;background-size: cover;"></div>
+            <h2 style="padding-left: 0;margin-top:15px;font-size: 1.3vw;font-weight: 700">{{ user.prenom }}</h2>
+            <p style="padding-left: 0;margin-top:5px;font-size: 0.9vw;color: grey"><i class="fas fa-map-marker-alt"></i> {{ user.ville }}</p>
+            <p style="padding-left: 0;margin-top:15px;margin-bottom: 15px"><img src="{{ asset('assets/img/food.svg') }}" alt="" width="10%"></p>
+            <a style="margin-top:10px;color:white;font-weight:700;width: 80%;border-radius:10px;height: 50px;background-color: #D94A64;display: flex;justify-content: center;align-items: center" href="{{ path('annonce_new') }}">Create new</a>
+            <h2 style="margin-top: 10px;padding:0;font-weight: 700;font-size: 1.2vw">Mes participations</h2>
+            <div style="margin-top:15px;padding: 10px;background-color: rgba(128,128,128,0.13); height: 40%;width: 80%;border-radius: 10px">
+                {% for part in user.annoncesParticipees %}
+                    <article style="margin-bottom:10px;display:flex;justify-content:center;align-items:center;color:white;font-weight:700;border-radius:5px;background-color:#f2c335;width: 100%;height: 30px">{{ part.intitule }}</article>
+                {% endfor %}
+            </div>
+        </section>
+    </section>
+
+{% endblock %}

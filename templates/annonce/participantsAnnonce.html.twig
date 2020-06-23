@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Participants annonce{% endblock %}
+
+{% block body %}
+
+    {% for participant in participants %}
+        <p>{{ participant.nom }}</p>
+    {% endfor %}
+{% endblock %}
